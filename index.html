@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Itinerary & Budget Guide Studio — The Musafir</title>
+  <style>
+    :root {
+      --primary: #f59e0b;
+      --primary-dark: #d97706;
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-dim: #94a3b8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
+    
+    header {
+      padding: 40px 20px;
+      text-align: center;
+      background: radial-gradient(circle at top, #334155, var(--bg));
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      padding: 6px 20px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+    h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; }
+    h1 span { color: var(--primary); }
+    p.sub { color: var(--text-dim); margin-top: 10px; font-size: 16px; max-width: 650px; margin-left: auto; margin-right: auto; }
+
+    .city-nav {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+    .city-btn {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--text);
+      padding: 12px 28px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .city-btn.active, .city-btn:hover {
+      background: var(--primary);
+      color: #0f172a;
+      border-color: var(--primary);
+      box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
+    }
+
+    main {
+      flex: 1;
+      max-width: 960px;
+      width: 100%;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .frame-container {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    iframe {
+      width: 100%;
+      height: 900px;
+      border: none;
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: var(--text-dim);
+      font-size: 14px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 60px;
+    }
+    footer a { color: var(--primary); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="badge">💰 Monetization Suite • Digital Products</div>
+    <h1>3-DAY TRAVEL <span>ITINERARY GUIDES</span></h1>
+    <p class="sub">Curated day-by-day sightseeing schedules, budget breakdowns, top stays, and food recommendations.</p>
+    
+    <div class="city-nav">
+      <button class="city-btn active" onclick="switchGuide('travel-itinerary/previews/pushkar_itinerary.html', 0)">🌸 Pushkar Guide</button>
+      <button class="city-btn" onclick="switchGuide('travel-itinerary/previews/udaipur_itinerary.html', 1)">🏰 Udaipur Guide</button>
+      <button class="city-btn" onclick="switchGuide('travel-itinerary/previews/jaipur_itinerary.html', 2)">👑 Jaipur Guide</button>
+      <button class="city-btn" onclick="switchGuide('travel-itinerary/previews/pushkar_promo.html', 3)">📱 Promo Poster View</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="frame-container">
+      <iframe id="guideFrame" src="travel-itinerary/previews/pushkar_itinerary.html"></iframe>
+    </div>
+  </main>
+
+  <footer>
+    <p>Created by <a href="https://github.com/themusafirr">The Musafir (@the.musafirrr__)</a> • Turnkey Digital Travel Product Engine</p>
+  </footer>
+
+  <script>
+    function switchGuide(path, idx) {
+      document.getElementById('guideFrame').src = path;
+      const buttons = document.querySelectorAll('.city-btn');
+      buttons.forEach((btn, i) => {
+        btn.classList.toggle('active', i === idx);
+      });
+    }
+  </script>
+</body>
+</html>
